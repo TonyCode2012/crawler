@@ -1,0 +1,28 @@
+version: 1
+
+disable_existing_loggers: False
+
+formatters:
+    brief: 
+        format: '[%(asctime)s] - [%(name)s] - [%(levelname)s] - %(message)s'
+    
+handlers:
+    file:
+        class: logging.handlers.RotatingFileHandler
+        filename: eleme.log
+        formatter: brief
+        #maxBytes: 1024
+        #backupCount: 1
+    console:
+        class : logging.StreamHandler
+        formatter: brief
+        level   : INFO
+        #filters: [allow_foo]
+        stream  : ext://sys.stdout
+
+loggers:
+    eleme:
+        handlers: [file]
+        level: INFO
+        #maxBytes: 1024
+        #backupCount: 3
